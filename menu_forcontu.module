@@ -15,6 +15,26 @@ function menu_forcontu_menu() {
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
   );
+  $items['calculadora/%/%'] = array(
+    'title' => 'Calculadora',
+    'page callback' => 'menu_forcontu_calculadora',
+    'page arguments' => array(1,2),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  $items['calculadora/%'] = array(
+    'title' => 'Calculadora',
+    'page callback' => 'menu_forcontu_calculadora',
+    'page arguments' => array(1),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  $items['calculadora'] = array(
+    'title' => 'Calculadora',
+    'page callback' => 'menu_forcontu_calculadora',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
 
   return $items;
 }
@@ -24,6 +44,19 @@ function menu_forcontu_menu() {
 * Función que se invocará al cargar la página www.example.com/pagina1
 */
 function menu_forcontu_pagina1() {
-$output = t('Main page of the module Menu Forcontu');
-return $output;
+  $output = t('Main page of the module Menu Forcontu');
+  return $output;
+}
+
+/**
+* Page callback
+* Función que se invoca al cargas la página www.example.com/calculadora/%/%
+*/
+function menu_forcontu_calculadora($x=0, $y=0) {
+  $output = '<p>La suma de ' . $x . ' y ' . $y . ' es: ' . ($x + $y) . '</p>';
+  $output .= '<p>La resta entre ' . $x . ' y ' . $y . ' es: ' . ($x - $y) . '</p>';
+  $output .= '<p>La mutiplicación entre ' . $x . ' y ' . $y . ' es: ' . ($x * $y) . '</p>';
+  $output .= '<p>La división entre ' . $x . ' y ' . $y . ' es: ' . ($x / $y) . '</p>';
+  $output .= '<p>El resto de la división entre ' . $x . ' y ' . $y . ' es: ' . ($x % $y) . '</p>';
+  return $output;
 }
