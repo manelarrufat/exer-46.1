@@ -60,8 +60,9 @@ function menu_forcontu_menu() {
   $items['tabs/tab2'] = array(
     'title' => 'Pestaña 2',
     'page callback' => 'menu_forcontu_tab2',
-    'access callback' => TRUE,
-    'type' => MENU_LOCAL_TASK,
+    'access callback' => 'user_access',
+    'access arguments' => array('access to menu forcontu'),
+    'type' => MENU_CALLBACK | MENU_LOCAL_TASK,
     'weight' => 2,
   );
   $items['tabs/tab3'] = array(
@@ -73,6 +74,19 @@ function menu_forcontu_menu() {
   );
 
   return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function menu_forcontu_permission() {
+  return array(
+    'access to menu forcontu' =>  array(
+      'title' => t('Acces to menu Forcontu'),
+      'description' => t('Allows access to restricted pages of 
+the menu items defined in Menu Forcontu'),
+    ),
+  );
 }
 
 /**
