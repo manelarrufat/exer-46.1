@@ -18,7 +18,7 @@ function menu_forcontu_menu() {
   $items['calculadora/%/%'] = array(
     'title' => 'Calculadora',
     'page callback' => 'menu_forcontu_calculadora',
-    'page arguments' => array(1,2),
+    'page arguments' => array(1, 2),
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
   );
@@ -34,6 +34,14 @@ function menu_forcontu_menu() {
     'page callback' => 'menu_forcontu_calculadora',
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
+  );
+  $items['admin/config/development/pagina1'] = array(
+    'title' => 'Página 1' ,
+    'page callback' => 'menu_forcontu_menu1',
+    'description' => 'Menú página 1',
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+    'weight' => -99,
   );
 
   return $items;
@@ -58,5 +66,15 @@ function menu_forcontu_calculadora($x=0, $y=0) {
   $output .= '<p>La mutiplicación entre ' . $x . ' y ' . $y . ' es: ' . ($x * $y) . '</p>';
   $output .= '<p>La división entre ' . $x . ' y ' . $y . ' es: ' . ($x / $y) . '</p>';
   $output .= '<p>El resto de la división entre ' . $x . ' y ' . $y . ' es: ' . ($x % $y) . '</p>';
+  return $output;
+}
+
+/**
+* Page callback url5
+* Función que se invocará al cargar la página 
+* www.example.com/admin/config/development/url5
+*/
+function menu_forcontu_menu1() {
+  $output = t('Elemento de menú creado en el ejercicio 46.1');
   return $output;
 }
