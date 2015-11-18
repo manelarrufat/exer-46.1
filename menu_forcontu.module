@@ -1,0 +1,29 @@
+<?php
+/**
+* @file
+* Módulo para probar menus
+* Este módulo crea un elemento de menú
+*/
+
+/**
+ * Implements hook_menu().
+ */
+function menu_forcontu_menu() {
+  $items['pagina1'] = array(
+    'title' => 'Menu Forcontu',
+    'page callback' => 'menu_forcontu_pagina1',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+* Page callback
+* Función que se invocará al cargar la página www.example.com/pagina1
+*/
+function menu_forcontu_pagina1() {
+$output = t('Main page of the module Menu Forcontu');
+return $output;
+}
