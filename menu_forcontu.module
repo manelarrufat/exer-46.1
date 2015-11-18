@@ -36,12 +36,40 @@ function menu_forcontu_menu() {
     'type' => MENU_CALLBACK,
   );
   $items['admin/config/development/pagina1'] = array(
-    'title' => 'Página 1' ,
+    'title' => 'Página 1',
     'page callback' => 'menu_forcontu_menu1',
     'description' => 'Menú página 1',
     'access callback' => TRUE,
     'type' => MENU_NORMAL_ITEM,
     'weight' => -99,
+  );
+  //Actividad 46.4 Creación de pestañas
+  $items['tabs'] = array(
+    'title' => 'Pestañas',
+    'page callback' => 'menu_forcontu_tab1',
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+    'menu_name' => 'main-menu',
+    'weight' => 1,
+  );
+  $items['tabs/tab1'] = array(
+    'title' => 'Pestaña 1',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => 1,
+  );
+  $items['tabs/tab2'] = array(
+    'title' => 'Pestaña 2',
+    'page callback' => 'menu_forcontu_tab2',
+    'access callback' => TRUE,
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 2,
+  );
+  $items['tabs/tab3'] = array(
+    'title' => 'Pestaña 3',
+    'page callback' => 'menu_forcontu_tab3',
+    'access callback' => TRUE,
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 3,
   );
 
   return $items;
@@ -76,5 +104,29 @@ function menu_forcontu_calculadora($x=0, $y=0) {
 */
 function menu_forcontu_menu1() {
   $output = t('Elemento de menú creado en el ejercicio 46.1');
+  return $output;
+}
+
+/**
+* Page callback - Tab 1
+*/
+function menu_forcontu_tab1() {
+  $output = t('First tab');
+  return $output;
+}
+
+/**
+* Page callback - Tab 2
+*/
+function menu_forcontu_tab2() {
+  $output = t('Second tab');
+  return $output;
+}
+
+/**
+* Page callback - Tab 3
+*/
+function menu_forcontu_tab3() {
+  $output = t('Thrid tab');
   return $output;
 }
